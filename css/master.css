@@ -1,0 +1,229 @@
+/* PROMĚNNÉ */
+:root {
+  --dark-primary-color: #0097A7;
+  --primary-color: #00BCD4;
+  --light-primary-color: #B2EBF2;
+  --accent-color: #FF5722;
+  --disabled-color: #939393;
+}
+
+/* OBECNÉ */
+  html, body {
+    margin: 0;
+    font-family: sans-serif;
+    background: var(--light-primary-color, #DCEDC8);
+  }
+
+  h1, h2, h3 {
+    font-weight: 300;
+    color: #212121;
+  }
+
+/* HEADER */
+  header {
+    background-color: var(--dark-primary-color, #689F38);
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 80px;
+  }
+
+  header h1 {
+    margin: auto 10px;
+    color: #FFFFFF;
+  }
+
+  header nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: stretch;
+  }
+
+  header nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0 10px;
+    line-height: 80px;
+    cursor: pointer;
+  }
+
+  header nav a:hover {
+    background-color: var(--accent-color, #00BCD4) !important;
+  }
+/* SECTION */
+  section {
+    display: flex;
+    align-items: stretch;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    height: 100vh;
+  }
+
+  .proc_container {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 1 200px;
+    padding: 10px 0 82px 0;
+    background: var(--light-primary-color, #DCEDC8);
+  }
+
+  .algorithm_info {
+    flex: 1 1 100%;
+    padding: 10px;
+    background-color: var(--primary-color, #8BC34A);
+  }
+
+  #table {
+    margin: 16px 0;
+  }
+
+  #table td,
+  #table th {
+    width: 30px;
+    height: 20px;
+    border: 1px solid var(--light-primary-color, #DCEDC8);
+    text-align: center;
+  }
+
+  #hide-info {
+    cursor: pointer;
+  }
+
+  #hide-info button {
+    padding: 0;
+    border: none;
+
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+
+    background-color: inherit;
+    color: #FFF;
+  }
+
+  .algorithm_info > div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .algorithm_info ul {
+    padding-left: 20px;
+  }
+
+  .algorithm_info h2 {
+      margin: auto 0;
+      color: #FFF;
+  }
+
+  .proc_container h2 {
+    text-align: center;
+    margin: 0 20px 10px 20px;
+  }
+
+  .proces-empty {
+    width: 100px;
+    height: 93px;
+    margin-bottom: 10px;
+  }
+
+  .proces{
+    width: 100px;
+    background: var(--primary-color, #8BC34A);
+    margin-bottom: 10px;
+  }
+
+  .proces h3{
+    text-align: center;
+    margin: 5px 0 0 0;
+  }
+
+  .proces > div{
+    display: table-row;
+  }
+
+  .proces label {
+    text-align: right;
+    width: 50px;
+    padding-right: 5px;
+    display: table-cell;
+  }
+
+  .proces input {
+    text-align: center;
+    width: 25px;
+    margin: 5px 25px 5px 0;
+    display: table-cell;
+  }
+
+  .buttons {
+    background: var(--dark-primary-color, #689F38);
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-flow: row wrap;
+  }
+
+  .buttons button {
+    padding: 0;
+    border: none;
+
+    font-family: sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-weight: lighter;
+
+    background-color: inherit;
+    color: #FFFFFF;
+  }
+
+  .buttons button:hover{
+    background-color: var(--accent-color, #00BCD4) !important;
+  }
+
+  .buttons button:disabled{
+    background-color: var(--disabled-color, #939393) !important;
+  }
+
+  .buttons #counter-button:hover {
+    background-color: var(--dark-primary-color, #689F38) !important;
+  }
+
+  .buttons input[type='checkbox'] {
+    background: var(--dark-primary-color, #689F38);
+  }
+
+  .proces-buttons {
+    background: var(--primary-color, #8BC34A);
+    width: 100px;
+  }
+
+  .proces-buttons button {
+    width: 50%;
+  }
+
+  .step-buttons {
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .step-buttons button {
+    width: 20%;
+  }
+
+/* FIXY */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  input[type="number"] {
+      -moz-appearance: textfield;
+  }

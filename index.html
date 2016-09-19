@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/master.css" type="text/css">
+    <title>Process algorritms</title>
+    <script src="script.js"></script>
+  </head>
+  <body onload="createProces(1); initEvents()">
+    <header>
+      <h1>Plánovací algoritmy</h1>
+      <nav>
+        <a onclick="changeAlgorithm('FCFS')" id="FCFS" style="background-color: var(--primary-color, #8BC34A);">First Come First Serve</a>
+        <a onclick="changeAlgorithm('SJF')" id="SJF">Shortest Job First</a>
+        <a onclick="changeAlgorithm('PPA')" id="PPA">Priority Planing Algorithm</a>
+        <a onclick="changeAlgorithm('RR')" id="RR">Round Robin</a>
+      </nav>
+    </header>
+    <section>
+      <div class="algorithm_info">
+        <div id="hide-info">
+          <h2>First Come First Serve</h2>
+          <button>▼</button>
+        </div>
+        <div id="algorithm-info">
+          <ul>
+            <li>Super užasný algoritmus</li>
+            <li>nepřekvapivě funguje</li>
+            <li>překvapivě není na piču</li>
+            <li>má rád jablka s omáčkou</li>
+          </ul>
+          <div id="table-holder">
+            <template id="table-template">
+              <table id="table">
+                <thead>
+                  <th>P</th>
+                  <th>AT</th>
+                  <th>BT</th>
+                  <th>CT</th>
+                  <th>TAT</th>
+                  <th>WT</th>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="proc_container" id="ready">
+        <h2>READY</h2>
+        <div class="buttons proces-buttons">
+          <button id="add">+</button><button id="sub">-</button>
+        </div>
+      </div>
+      <div class="proc_container" id="front">
+        <h2>FRONT</h2>
+        <div class="buttons proces-buttons" style="display: none">
+        </div>
+      </div>
+      <div class="proc_container" id="running">
+        <h2>RUNNING</h2>
+        <div class="buttons proces-buttons" style="display: none">
+        </div>
+      </div>
+      <div class="proc_container" id="completed">
+        <h2>COMPLETED</h2>
+        <div class="buttons proces-buttons" style="display: none">
+        </div>
+      </div>
+    </section>
+    <div class="buttons step-buttons">
+      <button id="step-up">NEXT STEP</button>
+      <button id="step-down" disabled>PREVIOUS STEP</button>
+      <button id="reset" disabled>RESET</button>
+      <button id="preemptive">PREEMPTIVE</button>
+      <button id="counter-button">STEP: <span id="step-counter">0</span></button>
+    </div>
+  </body>
+</html>
