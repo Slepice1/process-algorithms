@@ -23,11 +23,27 @@
           <button>▼</button>
         </div>
         <div id="algorithm-info">
-          <ul>
-            <li>Super užasný algoritmus</li>
-            <li>nepřekvapivě funguje</li>
-            <li>překvapivě není na piču</li>
-            <li>má rád jablka s omáčkou</li>
+          <ul id="FCFS-info" style="display: block">
+            <li>procesy jsou zpracovány v pořadí v jakém přicházejí</li>
+            <li>doba čekání (WT) a doba odezvy (TAT) mohou být vysoké</li>
+            <li>procesy nemohou vyhladovět</li>
+          </ul>
+          <ul id="SJF-info">
+            <li>procesy jsou zpracovány v podle předpokládaného délky zpracování (BT)</li>
+            <li>doba čekání (WT) a doba odezvy (TAT) jsou menší než u FCFS</li>
+            <li>procesy mohou vyhladovět pokud přichází mnoho malých procesů</li>
+            <li>preemptivní možnost umožňuje vyměnit běžící proces za jiný s menším BT a vrátit se k němu později</li>
+          </ul>
+          <ul id="PPA-info">
+            <li>procesy jsou zpracovány v podle podle priority (PR)</li>
+            <li>doba čekání (WT) a doba odezvy (TAT) závisí na prioritě procesů</li>
+            <li>procesy mohou vyhladovět pokud přichází mnoho malých procesů s vysokou prioritou</li>
+            <li>preemptivní možnost umožňuje vymkěnit běžící proces za jiný s větší PR a vrátit se k němu později</li>
+          </ul>
+          <ul id="RR-info">
+            <li>procesy mají přidělený čas na běh, když čas vyprší tak se proces mění, a tak pořád dokola</li>
+            <li>doba čekání (WT) a doba odezvy (TAT) závisí na počtu procesů</li>
+            <li>procesy nemohou vyhladovět</li>
           </ul>
           <div id="table-holder">
             <template id="table-template">
@@ -73,7 +89,7 @@
       <button id="step-up">NEXT STEP</button>
       <button id="step-down" disabled>PREVIOUS STEP</button>
       <button id="reset" disabled>RESET</button>
-      <button id="preemptive">PREEMPTIVE</button>
+      <button id="preemptive" disabled>PREEMPTIVE</button>
       <button id="counter-button">STEP: <span id="step-counter">0</span></button>
     </div>
   </body>

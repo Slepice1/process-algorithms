@@ -78,6 +78,10 @@
     background-color: var(--primary-color, #8BC34A);
   }
 
+  #algorithm-info ul {
+    display: none;
+  }
+
   #table {
     margin: 16px 0;
   }

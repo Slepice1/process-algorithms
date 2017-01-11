@@ -1,23 +1,24 @@
 var $ = function (selector, el) {
    if (!el) {el = document;}
    return el.querySelector(selector);
-}
+};
 
 var $$ = function (selector, el) {
      if (!el) {el = document;}
      return Array.prototype.slice.call(el.querySelectorAll(selector));
-}
+};
 
 var insertAfter = function (newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
+};
 
-var TABLE = "<table id='table'><thead><th>P</th><th>AT</th><th>BT</th><th>CT</th><th>TAT</th><th>WT</th></thead><tbody></tbody></table>"
+var TABLE = "<table id='table'><thead><th>P</th><th>AT</th><th>BT</th><th>CT</th><th>TAT</th><th>WT</th></thead><tbody></tbody></table>";
 
-algorithms = {FCFS: "First Come First Serve",
+ALGORITHMS = {FCFS: "First Come First Serve",
               SJF: "Shortest Job First",
               PPA: "Priority Planing Algorithm",
-              RR: "Round Robin"}
+              RR: "Round Robin"};
+
 algorithm = "FCFS";
 info_shown = true;
 
@@ -25,16 +26,16 @@ var isRunning = function () {
     return step > -1;
 };
 
-var changeAlgorithmVersion = function () {
-  $(".algorithm_info h2").innerHTML = algorithms[name];
+var changeAlgorithmVersion = function (name) {
+  $(".algorithm_info h2").innerHTML = ALGORITHMS[name];
   $( "#preemptive" ).disabled = false;
   if ( preemptive ) {
       $(".algorithm_info h2").innerHTML += " Preemptive";
       $( "#preemptive" ).style.backgroundColor = "var(--accent-color, #00BCD4)";
   } else {
-      $( "#preemptive" ).style.backgroundColor = "var(--primary-color, #8BC34A)";
+      $( "#preemptive" ).style.backgroundColor = "var(--dark-primary-color, #0097A7)";
   }
-}
+};
 
 var changeAlgorithm = function (name) {
     if ( isRunning() ) {
@@ -48,8 +49,10 @@ var changeAlgorithm = function (name) {
         if ( name === "PPA" ) {
             addPriorityInputs();
         }
-        $(".algorithm_info h2").innerHTML = algorithms[name];
+        $(".algorithm_info h2").innerHTML = ALGORITHMS[name];
         $( "#preemptive" ).disabled = false;
+        $( "#" + name + "-info").style.display = "block";
+        $( "#" + algorithm + "-info").style.display = "none";
         $("nav #" + algorithm).style.backgroundColor = 'inherit';
         $("nav #" + name).style.backgroundColor = "var(--primary-color, #8BC34A)";
         if ( preemptive && name !== "FCFS" && name !== "RR" ) {
@@ -130,7 +133,7 @@ var changeState = function (proces_n, to) {
 var changePreemptiveSettings = function () {
     if (algorithm !== "FCFS" && algorithm !== "RR")  {
         preemptive = !preemptive;
-        changeAlgorithmVersion();
+        changeAlgorithmVersion(algorithm);
     }
 };
 
@@ -161,7 +164,7 @@ var resetProceses = function () {
 var sortProcesses = function(a, b) {
     if ( algorithm === "FCFS" ) {
         if ( "PA" in a && "PA" in b ) {
-            return a.PA-b.PA
+            return a.PA - b.PA;
         } else if ( "PA" in a ) {
             return 1;
         } else if ( "PA" in b ) {
@@ -172,9 +175,9 @@ var sortProcesses = function(a, b) {
     } else if ( algorithm === "SJF" ) {
         if ( "PA" in a && "PA" in b ) {
           if ( a.BT === b.BT ) {
-              return a.PA-b.PA
+              return a.PA - b.PA;
           } else {
-              return a.BT-b.BT
+              return a.BT - b.BT;
           }
         } else if ( "PA" in a ) {
             return 1;
@@ -186,9 +189,9 @@ var sortProcesses = function(a, b) {
     } else if ( algorithm === "PPA") {
         if ( "PA" in a && "PA" in b ) {
           if ( a.PR === b.PR ) {
-              return a.PA-b.PA
+              return a.PA - b.PA;
           } else {
-              return b.PR-a.PR
+              return b.PR - a.PR;
           }
         } else if ( "PA" in a ) {
             return 1;
@@ -198,14 +201,14 @@ var sortProcesses = function(a, b) {
             return 0;
         }
     }
-}
+};
 
 var getInputs = function ( proces, filled ) {
       var bt = $( "div > #bt", proces ).value;
       var at = $( "div > #at", proces ).value;
       if ( algorithm === "PPA" ) {
           var pr = $( "div > #pr", proces ).value;
-          return [pr && bt && at && filled, {'PR': pr, 'BT': bt, 'AT': at}]
+          return [pr && bt && at && filled, {'PR': pr, 'BT': bt, 'AT': at}];
       } else {
           var pr = false;
           return [bt && at && filled, {'BT': bt, 'AT': at}];
@@ -243,7 +246,7 @@ var initEvents = function () {
           proceses = {ready:[], front:[], running:undefined, completed:[]};
           steps = [];
           $$( "#ready > .proces" ).forEach( function( proces ) {
-              inputs_info = getInputs( proces, filled )
+              inputs_info = getInputs( proces, filled );
               filled = inputs_info[0];
               inputs = inputs_info[1];
               if ( filled ) {
@@ -254,10 +257,10 @@ var initEvents = function () {
                                        'BTa':parseInt( inputs.BT )});
                   var l = proceses.ready.length-1;
                   $$( ".proc_container #p" + (l+1)).forEach( function( proces ) {
-                      $("#bt", proces).value = proceses.ready[l].BT
-                      $("#at", proces).value = proceses.ready[l].AT
+                      $("#bt", proces).value = proceses.ready[l].BT;
+                      $("#at", proces).value = proceses.ready[l].AT;
                       if ( inputs.PR ) {
-                          $("#pr", proces).value = proceses.ready[l].PR
+                          $("#pr", proces).value = proceses.ready[l].PR;
                       }
                   });
               }
